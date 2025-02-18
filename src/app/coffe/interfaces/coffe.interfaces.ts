@@ -10,6 +10,5 @@ export interface Coffe {
 }
 
 export interface Flavor {
-  id:   number;
   name: string;
 }

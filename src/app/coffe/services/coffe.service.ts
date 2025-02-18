@@ -17,4 +17,17 @@ export class CoffeService {
   public getOnById(id : number) : Observable<Coffe>{
     return this.http.get<Coffe>(`${this.apiUrl}/coffes/${id}`);
   }
+  public create(coffe : Coffe): Observable<Coffe>{
+    console.log('Creating coffe: ', coffe);
+    // coffe.flavors = [{name: 'choclate'}, {name: 'leche'}]
+    return this.http.post<Coffe>(`${this.apiUrl}/coffes`,
+      coffe
+    );
+  }
+  public update(coffe : Coffe): Observable<Coffe>{
+    return this.http.put<Coffe>(`${this.apiUrl}/coffes/${coffe.id}`, coffe);
+  }
+  public delete(id : number) : Observable<Coffe>{
+    return this.http.delete<Coffe>(`${this.apiUrl}/coffes/${id}`);
+  }
 }

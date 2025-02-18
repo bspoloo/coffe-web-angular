@@ -1,0 +1,92 @@
+<div class="container">
+  <form
+    method="get"
+    id="login-form"
+    class="login-form"
+    autocomplete="off"
+    role="main"
+    [formGroup]="this.myForm"
+    (ngSubmit)="this.onSave()"
+  >
+    <h1 class="a11y-hidden">Create new Coffe</h1>
+    <div class="data-user">
+      <div class="">
+        <label class="label-email">
+          <input
+            type="text"
+            class="text"
+            placeholder="Name"
+            tabindex="1"
+            formControlName="name"
+          />
+          <span class="required">Name</span>
+        </label>
+      </div>
+      <input
+        type="checkbox"
+        name="show-password"
+        class="show-password a11y-hidden"
+        id="show-password"
+        tabindex="3"
+        formControlName="isAvaible"
+      />
+      <label class="label-show-password" for="show-password">
+        <span>¿It's avaible?</span>
+      </label>
+      <div>
+        <label class="label-password">
+          <input
+            type="text"
+            class="text"
+            placeholder="Description"
+            tabindex="2"
+            formControlName="description"
+          />
+          <span class="required">Description</span>
+        </label>
+      </div>
+
+      <div class="add-flavor">
+        <label class="">
+          <input
+            type="text"
+            class="text"
+            placeholder="Flavor"
+            tabindex="1"
+            formControlName="flavor"
+          />
+          <span class="required">Add Flavors</span>
+        </label>
+        <br />
+
+      </div>
+      <div class="add-flavor" formArrayName="flavors">
+        <div
+          class="flavor-input"
+          *ngFor="let flavor of this.getFlavors().controls; let i = index"
+        >
+          <input
+            type="text"
+            class="text"
+            placeholder="Flavor"
+            tabindex="1"
+            [formControlName]="i"
+          />
+          <br />
+          <button class="btn btn-danger" (click)="this.removeToFlavors(i)">
+            Remove
+          </button>
+        </div>
+      </div>
+      <input type="submit" value="Save" />
+    </div>
+  </form>
+  <button class="btn btn-secondary" (click)="this.addToFlavors()">
+    Add
+  </button>
+  <br>
+  <br>
+  <button class="btn btn-danger" *ngIf="this.getCurrentCoffe().id" (click)="this.onDelete()">
+    Delete
+  </button>
+</div>
