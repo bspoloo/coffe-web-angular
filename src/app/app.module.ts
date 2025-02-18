@@ -4,6 +4,8 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from "./shared/shared.module";
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { CoffeModule } from './coffe/coffe.module';
 
 @NgModule({
   declarations: [
@@ -12,10 +14,9 @@ import { SharedModule } from "./shared/shared.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
-],
-  providers: [
-    provideClientHydration(withEventReplay())
+    SharedModule,
+    CoffeModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="banner-image"></div>
+    <h1>{{coffe?.name}}</h1>
+    <p>
+      {{coffe?.description}}
+    </p>
+  </div>
+  <div class="button-wrapper">
+    <button class="btn outline" routerLink="/coffes/by/{{coffe?.id}}">DETAILS</button>
+    <button class="btn fill" routerLink="/coffes/edit/{{coffe?.id}}">Edit</button>
+  </div>
+</div>
